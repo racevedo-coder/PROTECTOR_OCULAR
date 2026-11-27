@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protector ocular</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ ENCABEZADO ============ -->
+<header class="top">
+  <div class="brand">
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+      <path d="M2 16C6 9 11 6 16 6s10 3 14 10c-4 7-9 10-14 10S6 23 2 16Z" fill="none" stroke="var(--teal)" stroke-width="2"/>
+      <circle cx="16" cy="16" r="5" fill="var(--amber)"/>
+    </svg>
+    <span>Protector ocular</span>
+  </div>
+  <nav aria-label="Secciones">
+    <a href="#como">Cómo funciona</a>
+    <a href="#panel">Panel</a>
+    <a href="#control">Control</a>
+    <a href="#equipo">Componentes</a>
+  </nav>
+  <div class="conn"><span class="dot" id="dot"></span><span id="connTxt">Conectando…</span></div>
+</header>
+
+<main>
+
+  <!-- ============ PORTADA ============ -->
+  <section class="portada">
+    <div class="portada-texto">
+      <p class="etiqueta">Protector ocular inteligente</p>
+      <h1>Tus ojos no deberían adaptarse a la oscuridad de tu cuarto.</h1>
+      <p class="intro">Dos sensores de luz miden el ambiente y tu pantalla. Cuando el cuarto está muy oscuro, una tira LED compensa y te avisa, para que trabajes sin forzar la vista.</p>
+      <div class="botones">
+        <a class="btn btn-principal" href="#panel">Ver el panel en vivo</a>
+        <a class="btn btn-borde" href="#como">Cómo funciona</a>
+      </div>
+    </div>
+
+    <div class="card gauge-card">
+      <div class="gauge">
+        <svg viewBox="0 0 120 70" aria-hidden="true">
+          <path d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="var(--line)" stroke-width="12" stroke-linecap="round"/>
+          <path id="arc" d="M10 62 A50 50 0 0 1 110 62" fill="none" stroke="var(--teal)" stroke-width="12" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+        </svg>
+        <div class="num"><span id="v4">--</span><span class="unit">%</span></div>
+      </div>
+      <p class="gauge-titulo">Calidad de iluminación</p>
+    </div>
+  </section>
+
+  <!-- ============ CÓMO FUNCIONA ============ -->
+  <section id="como" class="seccion">
+    <h2>Cómo funciona</h2>
+    <p class="sub">Tres pasos, sin que tengas que tocar nada.</p>
+    <div class="pasos">
+      <article class="card">
+        <p class="paso-n">01</p>
+        <h3>Mide</h3>
+        <p>Un sensor BH1750 lee la luz del cuarto y otro la de la pantalla, en lux.</p>
+      </article>
+      <article class="card">
+        <p class="paso-n">02</p>
+        <h3>Decide</h3>
+        <p>Si la luz baja del umbral de oscuridad, el sistema entra en modo protección.</p>
+      </article>
+      <article class="card">
+        <p class="paso-n paso-n-led">03</p>
+        <h3>Protege</h3>
+        <p>La tira LED se enciende con el brillo ajustado y recibes una alerta en el celular.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PANEL ============ -->
+  <section id="panel" class="seccion">
+    <h2>Tu panel de cuidado visual</h2>
+    <p class="sub">Datos en vivo desde Blynk.</p>
+
+    <div class="lecturas-fila">
+      <div class="estado" id="estadoBox">
+        <span>Estado del cuarto</span>
+        <b id="estado">--</b>
+      </div>
+      <div class="lecturas">
+        <div class="mini"><small>Luz del cuarto</small><b><span id="v11">--</span> <small>lx</small></b></div>
+        <div class="mini"><small>Luz de la pantalla</small><b><span id="v1">--</span> <small>lx</small></b></div>
+        <div class="mini"><small>Tira LED</small><b><span id="v2">--</span><small>%</small></b></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card"><h3>Minutos en oscuridad crítica</h3><div class="val" id="v5">--</div></div>
+      <div class="card"><h3>Minutos protegidos por el LED</h3><div class="val" id="v13">--</div></div>
+      <div class="card"><h3>Horas de uso del computador</h3><div class="val" id="v6">--</div></div>
+      <div class="card"><h3>Contraste promedio</h3><div class="val" id="v14">--</div></div>
+      <div class="card"><h3>Racha más larga en oscuridad</h3><div class="val" id="v15">--</div></div>
+      <div class="card"><h3>Alertas enviadas</h3><div class="val" id="v16">--</div></div>
+    </div>
+
+    <div class="card grafica">
+      <h3>Gráfica de horas de uso</h3>
+      <svg id="chart" viewBox="0 0 600 150" preserveAspectRatio="none" role="img" aria-label="Horas de uso a lo largo del tiempo"></svg>
+      <div class="vacio" id="chartInfo">La gráfica se llena mientras esta página está abierta.</div>
+    </div>
+  </section>
+
+  <!-- ============ CONTROL ============ -->
+  <section id="control" class="seccion">
+    <h2>Tú decides cuándo actúa</h2>
+    <p class="sub">Ajusta los umbrales o pasa a control manual cuando quieras.</p>
+    <div class="controls">
+      <div class="card ctl">
+        <label for="v8">Umbral de pantalla encendida <output id="o8">--</output></label>
+        <input type="range" id="v8" min="0" max="100" step="1" value="30">
+      </div>
+      <div class="card ctl">
+        <label for="v7">Umbral de oscuridad <output id="o7">--</output></label>
+        <input type="range" id="v7" min="0" max="100" step="1" value="20">
+      </div>
+      <div class="card ctl">
+        <label for="v10">Brillo manual <output id="o10">--</output></label>
+        <input type="range" id="v10" min="0" max="100" step="1" value="0">
+      </div>
+      <div class="card ctl">
+        <div class="switch"><label for="v9">Modo automático</label><input type="checkbox" id="v9"></div>
+      </div>
+    </div>
+    <p class="msg" id="msg" role="status"></p>
+  </section>
+
+  <!-- ============ COMPONENTES ============ -->
+  <section id="equipo" class="seccion">
+    <h2>Componentes</h2>
+    <div class="componentes">
+      <article class="card"><h3>2 sensores BH1750</h3><p>Luz del ambiente y luz de la pantalla.</p></article>
+      <article class="card"><h3>ESP32</h3><p>Lee los sensores y envía los datos a Blynk.</p></article>
+      <article class="card"><h3>Tira LED</h3><p>Compensa la luz cuando el cuarto está oscuro.</p></article>
+      <article class="card"><h3>App Blynk</h3><p>Panel web y celular con alertas.</p></article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">Protector ocular · Ingeniería de Sistemas · Universidad de Córdoba</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
