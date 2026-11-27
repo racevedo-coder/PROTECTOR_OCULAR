@@ -45,6 +45,7 @@ function pintar(d) {
   const cal = Math.max(0, Math.min(100, Number(d.v4) || 0));
   $("v4").textContent = num(d.v4);
   $("arc").setAttribute("stroke-dasharray", `${cal} 100`);
+  $("arc").setAttribute("stroke-opacity", cal > 0 ? 1 : 0);   // con 0 % no se dibuja
   $("arc").setAttribute("stroke", cal >= 70 ? "var(--teal)" : cal >= 40 ? "var(--amber)" : "var(--red)");
 
   $("v5").innerHTML  = hm(d.v5);
